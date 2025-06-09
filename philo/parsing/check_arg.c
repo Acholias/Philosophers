@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:23:48 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/04 11:56:48 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/07 12:26:38 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_helper(char *message)
 		"│                           Usage                               │\n"
 		"\033[0m"
 		"├───────────────────────────────────────────────────────────────┤\n"
-		"│  ./philo nb_philos t_die t_eat t_sleep [nb_meals]             │\n"
+		"│        ./philo nb_philos t_die t_eat t_sleep [nb_meals]       │\n"
 		"├───────────────────────────────────────────────────────────────┤\n"
 		"│  nb_philos : Number of philosophers                           │\n"
 		"│  t_die     : Time to die (ms)                                 │\n"
@@ -57,14 +57,14 @@ int	check_arg(int argc, char **argv)
 {
     if (argc == 5)
     {
-        if (!is_str_digit(argv[1]) || !is_str_digit(argv[2]) 
+        if (!is_str_digit(argv[1]) || !is_str_digit(argv[2])
 			|| !is_str_digit(argv[3]) || !is_str_digit(argv[4]))
             return (KO);
     }
     if (argc == 6)
     {
         if (!is_str_digit(argv[1]) || !is_str_digit(argv[2]) 
-			|| !is_str_digit(argv[3]) || !is_str_digit(argv[4]) 
+			|| !is_str_digit(argv[3]) || !is_str_digit(argv[4])
 			|| !is_str_digit(argv[5]))
             return (KO);
     }

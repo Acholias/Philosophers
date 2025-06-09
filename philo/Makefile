@@ -6,7 +6,7 @@
 #    By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/30 15:33:08 by lumugot           #+#    #+#              #
-#    Updated: 2025/06/04 12:27:07 by lumugot          ###   ########.fr        #
+#    Updated: 2025/06/09 12:56:22 by lumugot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = main.c \
 		parsing/utils.c \
 		parsing/check_arg.c \
 		parsing/setup_data.c \
+		src/routine.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 

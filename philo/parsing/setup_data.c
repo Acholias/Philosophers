@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:53:35 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/04 12:29:13 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/09 17:50:53 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->nb_philos = ft_atoi(argv[1]);
 	data->t_die = ft_atoi(argv[2]);
 	data->t_eat = ft_atoi(argv[3]);
-	data->t_spleep = ft_atoi(argv[4]);
+	data->t_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 		data->nb_meals = ft_atoi(argv[5]);
 	else
@@ -29,6 +29,7 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philos);
 	if (!data->forks)
 		return ;
+	pthread_mutex_init(&data->print_mutex, NULL);
 	while (index < data->nb_philos)
 	{
 		pthread_mutex_init(&data->forks[index], NULL);
@@ -53,6 +54,7 @@ t_philo	*init_philos(t_data *data)
 		philos[index].left_fork = &data->forks[index];
 		philos[index].right_fork = &data->forks[(index + 1) % data->nb_philos];
 		philos[index].data = data;
+		pthread_mutex_init(&philos[index].meal_mutex, NULL);
 		index++;
 	}
 	return (philos);
