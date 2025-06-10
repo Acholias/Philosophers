@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:53:35 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 23:39:04 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 23:56:34 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,6 @@ static int	init_forks(t_data *data)
 	while (index < data->nb_philos)
 	{
 		pthread_mutex_init(&data->forks[index], NULL);
-		index++;
-	}
-	return (OK);
-}
-
-static int	parse_input(int argc, char **argv)
-{
-	int		index;
-	int		j;
-	long	val;
-
-	index = 1;
-	while (index < argc)
-	{
-		j = 0;
-		if (argv[index][j] == '+')
-			j++;
-		while (argv[index][j])
-		{
-			if (argv[index][j] < '0' || argv[index][j] > '9')
-				return (KO);
-			j++;
-		}
-		val = ft_atol(argv[index]);
-		if (val <= 0 || val > INT_MAX)
-			return (KO);
 		index++;
 	}
 	return (OK);

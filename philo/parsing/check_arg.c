@@ -6,35 +6,36 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:23:48 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 23:16:54 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 23:58:04 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	print_helper(char *message)
+int	parse_input(int argc, char **argv)
 {
-	ft_putstr_fd("\033[1;31m", 2);
-	ft_putendl_fd(message, 2);
-	ft_putendl_fd("\033[0m", 2);
-	ft_putendl_fd(
-		"┌──────────────────────────────────────────────────────────────┐\n"
-		"│                           Usage                              │\n"
-		"├──────────────────────────────────────────────────────────────┤\n"
-		"│        ./philo nb_philos t_die t_eat t_sleep [nb_meals]      │\n"
-		"├──────────────────────────────────────────────────────────────┤\n"
-		"│  nb_philos : Number of philosophers (must be > 0)            │\n"
-		"│  t_die     : Time to die (ms)                                │\n"
-		"│  t_eat     : Time to eat (ms)                                │\n"
-		"│  t_sleep   : Time to sleep (ms)                              │\n"
-		"│  nb_meals  : (optional) Number of meals                      │\n"
-		"└──────────────────────────────────────────────────────────────┘", 2);
-}
+	int		index;
+	int		j;
+	long	val;
 
-void	error_digit_arg(void)
-{
-	ft_putstr_fd("\033[1;31mWrong arguments: Please enter only ", 1);
-	ft_putendl_fd("integer numbers !\033[0m", 2);
+	index = 1;
+	while (index < argc)
+	{
+		j = 0;
+		if (argv[index][j] == '+')
+			j++;
+		while (argv[index][j])
+		{
+			if (argv[index][j] < '0' || argv[index][j] > '9')
+				return (KO);
+			j++;
+		}
+		val = ft_atol(argv[index]);
+		if (val <= 0 || val > INT_MAX)
+			return (KO);
+		index++;
+	}
+	return (OK);
 }
 
 int	is_str_digit(char *str)

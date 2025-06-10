@@ -6,7 +6,7 @@
 #    By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/30 15:33:08 by lumugot           #+#    #+#              #
-#    Updated: 2025/06/10 23:35:53 by lumugot          ###   ########.fr        #
+#    Updated: 2025/06/10 23:55:43 by lumugot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ MAKEFLAGS += -s --no-print-directory
 CFLAGS = -Wall -Wextra -Werror -pthread -g
 
 SRC = main.c \
+		parsing/error.c \
 		parsing/utils.c \
 		parsing/convert_utils.c \
 		parsing/check_arg.c \

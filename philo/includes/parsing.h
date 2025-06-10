@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:59:23 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 23:36:02 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 23:57:02 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define PARSING_H
 
 # include "philo.h"
+
+//error.c
+void	print_helper(char *message);
+void	error_digit_arg(void);
 
 //utils.c
 void	ft_putchar_fd(char c, int fd);
@@ -26,8 +30,7 @@ int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 
 //check_arg.c
-void	print_helper(char *message);
-void	error_digit_arg(void);
+int		parse_input(int argc, char **argv);
 int		is_str_digit(char *str);
 int		check_arg(int argc, char **argv);
 int		parse_arg(int argc, char **argv);
