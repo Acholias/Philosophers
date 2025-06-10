@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:23:48 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/07 12:26:38 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 18:47:20 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,34 +41,34 @@ void	error_digit_arg(void)
 
 int	is_str_digit(char *str)
 {
-    int	i = 0;
-    if (!str || !str[0])
-        return (0);
-    while (str[i])
-    {
-        if (!ft_isdigit(str[i]))
-            return (0);
-        i++;
-    }
-    return (1);
+	int	i = 0;
+	if (!str || !str[0])
+		return (0);
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	check_arg(int argc, char **argv)
 {
-    if (argc == 5)
-    {
-        if (!is_str_digit(argv[1]) || !is_str_digit(argv[2])
+	if (argc == 5)
+	{
+		if (!is_str_digit(argv[1]) || !is_str_digit(argv[2])
 			|| !is_str_digit(argv[3]) || !is_str_digit(argv[4]))
-            return (KO);
-    }
-    if (argc == 6)
-    {
-        if (!is_str_digit(argv[1]) || !is_str_digit(argv[2]) 
+			return (KO);
+	}
+	if (argc == 6)
+	{
+		if (!is_str_digit(argv[1]) || !is_str_digit(argv[2]) 
 			|| !is_str_digit(argv[3]) || !is_str_digit(argv[4])
 			|| !is_str_digit(argv[5]))
-            return (KO);
-    }
-    return (OK);
+			return (KO);
+	}
+	return (OK);
 }
 
 int	parse_arg(int argc, char **argv)

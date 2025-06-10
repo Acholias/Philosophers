@@ -6,18 +6,23 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:53:35 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/09 17:50:53 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 18:47:19 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	init_data(t_data *data, int argc, char **argv)
+int	init_data(t_data *data, int argc, char **argv)
 {
 	int	index;
 
 	index = 0;
 	data->nb_philos = ft_atoi(argv[1]);
+	if (data->nb_philos <= 0)
+	{
+		ft_putendl_fd("WHAT THE FUCK MEN !!", 2);
+		return (KO);
+	}
 	data->t_die = ft_atoi(argv[2]);
 	data->t_eat = ft_atoi(argv[3]);
 	data->t_sleep = ft_atoi(argv[4]);
@@ -28,13 +33,14 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->simu_off = 0;
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philos);
 	if (!data->forks)
-		return ;
+		return (KO);
 	pthread_mutex_init(&data->print_mutex, NULL);
 	while (index < data->nb_philos)
 	{
 		pthread_mutex_init(&data->forks[index], NULL);
 		index++;
 	}
+	return (OK);
 }
 
 t_philo	*init_philos(t_data *data)

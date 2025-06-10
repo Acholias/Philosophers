@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:59:23 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/04 12:28:00 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 18:19:20 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		check_arg(int argc, char **argv);
 int		parse_arg(int argc, char **argv);
 
 //setup_data.c
-void	init_data(t_data *data, int argc, char **argv);
+int	    init_data(t_data *data, int argc, char **argv);
 t_philo	*init_philos(t_data *data);
 
 #endif
