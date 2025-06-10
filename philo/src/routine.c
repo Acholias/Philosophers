@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 12:50:17 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/09 18:16:29 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 15:07:25 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_usleep(long int time_in_ms)
 
 	start = get_time();
 	while ((get_time() - start) < time_in_ms)
-		usleep(500);
+		usleep(500); 
 }
 
 void	print_action(t_philo *philo, const char *action)
@@ -55,11 +55,11 @@ void	philo_eat(t_philo *philo)
         first = philo->right_fork;
         second = philo->left_fork;
     }
-    pthread_mutex_lock(first);
+    pthread_mutex_lock(first); 
     print_action(philo, "has taken a fork");
     if (philo->data->nb_philos == 1)
     {
-        ft_usleep(philo->data->t_die);
+        ft_usleep(1);
         pthread_mutex_unlock(first);
         return ;
     }
@@ -74,7 +74,6 @@ void	philo_eat(t_philo *philo)
     pthread_mutex_unlock(first);
     pthread_mutex_unlock(second);
 }
-
 
 void	philo_sleep_and_think(t_philo *philo)
 {
@@ -91,9 +90,9 @@ void	*start_routine(void *arg)
 		usleep(500);
 	while (!philo->data->simu_off)
 	{
-		philo_eat(philo);
 		if (philo->data->simu_off)
 			break;
+		philo_eat(philo);
 		pthread_mutex_lock(&philo->meal_mutex);
 		if (philo->data->nb_meals > 0 && philo->nb_meals_eaten >= philo->data->nb_meals)
 		{
