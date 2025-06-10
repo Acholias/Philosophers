@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:19:23 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 18:47:22 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 19:04:33 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "philo.h"
 
-#define KO 1
-#define OK 0
+# define KO 1
+# define OK 0
 
 typedef struct s_data
 {
@@ -28,8 +28,8 @@ typedef struct s_data
 	int				nb_meals;
 	int				simu_off;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t print_mutex;
-}   t_data;
+	pthread_mutex_t	print_mutex;
+}	t_data;
 
 typedef struct s_philo
 {

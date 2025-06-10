@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 18:45:03 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 18:46:40 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 19:05:18 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	print_action(t_philo *philo, const char *action)
 void	lock_forks(t_philo *philo, pthread_mutex_t **first,
 	pthread_mutex_t **second)
 {
-	if (philo->left_fork < philo->right_fork && philo->data->nb_philos % 2 == 0)
+	// if (philo->left_fork < philo->right_fork && philo->data->nb_philos % 2 == 0)
+	if (philo->left_fork < philo->right_fork)
 	{
 		*first = philo->left_fork;
 		*second = philo->right_fork;
@@ -91,8 +92,8 @@ void	philo_sleep_and_think(t_philo *philo)
 int	check_meals(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->meal_mutex);
-	if (philo->data->nb_meals > 0 && philo->nb_meals_eaten >=
-		philo->data->nb_meals)
+	if (philo->data->nb_meals > 0 && philo->nb_meals_eaten
+		>= philo->data->nb_meals)
 	{
 		pthread_mutex_unlock(&philo->meal_mutex);
 		return (1);
