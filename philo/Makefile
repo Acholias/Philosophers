@@ -6,7 +6,7 @@
 #    By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/30 15:33:08 by lumugot           #+#    #+#              #
-#    Updated: 2025/06/10 18:43:12 by lumugot          ###   ########.fr        #
+#    Updated: 2025/06/10 23:35:53 by lumugot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,14 @@ CFLAGS = -Wall -Wextra -Werror -pthread -g
 
 SRC = main.c \
 		parsing/utils.c \
+		parsing/convert_utils.c \
 		parsing/check_arg.c \
 		parsing/setup_data.c \
-		src/routine.c
+		src/actions.c \
+		src/routine.c \
+		src/check_simulation.c \
+		src/launch_monitoring.c \
+		src/destroy_thread.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 

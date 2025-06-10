@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:19:23 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 19:04:33 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 23:05:24 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 
 # define KO 1
 # define OK 0
+
+# define MSG_FORK    "has taken a fork 🍴"
+# define MSG_EAT     "is eating 🍝"
+# define MSG_SLEEP   "is sleeping 💤"
+# define MSG_THINK   "is thinking 💭"
+# define MSG_DIED    "died 💀"
 
 typedef struct s_data
 {

@@ -1,45 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   destroy_thread.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 12:23:02 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 23:33:23 by lumugot          ###   ########.fr       */
+/*   Created: 2025/06/10 22:52:21 by lumugot           #+#    #+#             */
+/*   Updated: 2025/06/10 22:52:46 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	cleanup_thread(t_data *data, t_philo *philos)
 {
-	write(fd, &c, 1);
-}
+	int	i;
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	if (!s || fd < 0)
-		return ;
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	index;
-
-	index = 0;
-	if (!s || fd < 0)
-		return ;
-	while (s[index])
+	i = -1;
+	while (++i < data->nb_philos)
 	{
-		ft_putchar_fd(s[index], fd);
-		index++;
+		pthread_mutex_destroy(&data->forks[i]);
+		pthread_mutex_destroy(&philos[i].meal_mutex);
 	}
-}
-
-int	ft_isdigit(int c)
-{
-	return (c >= 48 && c <= 57);
+	pthread_mutex_destroy(&data->print_mutex);
+	free(data->forks);
+	free(philos);
 }

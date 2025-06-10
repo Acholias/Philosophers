@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:59:23 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 19:02:51 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 23:36:02 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putstr_fd(char *s, int fd);
 int		ft_isdigit(int c);
-int		ft_atoi(const char *nptr);
+
+//convert_utils.c
+int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 
 //check_arg.c
 void	print_helper(char *message);
