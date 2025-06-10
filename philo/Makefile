@@ -6,7 +6,7 @@
 #    By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/30 15:33:08 by lumugot           #+#    #+#              #
-#    Updated: 2025/06/10 23:55:43 by lumugot          ###   ########.fr        #
+#    Updated: 2025/06/11 00:36:03 by lumugot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@ NAME = philo
 OBJ_DIR = objs
 
 CC = cc
-
-MAKEFLAGS += -s --no-print-directory
 
 CFLAGS = -Wall -Wextra -Werror -pthread -g
 
@@ -35,7 +33,6 @@ SRC = main.c \
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 all: $(NAME)
-	@sleep 1
 	@clear
 	@sleep 1
 	@echo "$$BANNER"
@@ -50,14 +47,15 @@ $(OBJ_DIR)/%.o: %.c
 
 clean:
 	@rm -rf $(OBJ_DIR)
-
+	@echo "\033[1;34m🧹  Object files and directories removed successfully!\033[0m"
 
 fclean: clean
 	@rm -f $(NAME)
+	 @echo "\033[1;31m🔥  All object files, directories, and the executable have been removed!\033[0m"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re 
 
 
 define BANNER
