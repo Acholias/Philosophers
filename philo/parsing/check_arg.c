@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:23:48 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 18:59:32 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 19:14:42 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_helper(char *message)
 		"├──────────────────────────────────────────────────────────────┤\n"
 		"│        ./philo nb_philos t_die t_eat t_sleep [nb_meals]      │\n"
 		"├──────────────────────────────────────────────────────────────┤\n"
-		"│  nb_philos : Number of philosophers                          │\n"
+		"│  nb_philos : Number of philosophers (must be > 0)            │\n"
 		"│  t_die     : Time to die (ms)                                │\n"
 		"│  t_eat     : Time to eat (ms)                                │\n"
 		"│  t_sleep   : Time to sleep (ms)                              │\n"

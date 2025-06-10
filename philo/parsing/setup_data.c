@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:53:35 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 19:02:20 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/10 19:13:56 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	init_data(t_data *data, int argc, char **argv)
 	data->nb_philos = ft_atoi(argv[1]);
 	if (data->nb_philos <= 0)
 	{
-		ft_putendl_fd("WHAT THE FUCK MEN !!", 2);
+		print_helper
+		("Wrong arguments: The number of philosophers must be > 0");
 		return (KO);
 	}
 	data->t_die = ft_atoi(argv[2]);
