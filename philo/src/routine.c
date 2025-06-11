@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 18:45:03 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 23:10:47 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/11 12:20:51 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ void	*start_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->data->nb_philos == 1)
+	{
+		print_action(philo, MSG_FORK);
+		return (NULL);
+	}
 	if (philo->id % 2 == 0)
 		usleep(500);
 	while (!philo->data->simu_off)

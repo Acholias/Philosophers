@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 22:39:07 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 23:01:40 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/11 12:20:27 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ void	philo_eat(t_philo *philo)
 	lock_forks(philo, &first, &second);
 	pthread_mutex_lock(first);
 	print_action(philo, MSG_FORK);
-	if (philo->data->nb_philos == 1)
-	{
-		ft_usleep(1);
-		pthread_mutex_unlock(first);
-		return ;
-	}
 	pthread_mutex_lock(second);
 	print_action(philo, MSG_FORK);
 	pthread_mutex_lock(&philo->meal_mutex);
