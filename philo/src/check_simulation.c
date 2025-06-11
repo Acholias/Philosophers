@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 22:45:43 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/10 23:02:27 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/11 15:37:16 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	check_death(t_philo *philos, t_data *data, int i)
 		if (!data->simu_off)
 			printf("%ld %d %s\n", get_time() - data->start_time,
 				philos[i].id, MSG_DIED);
-		data->simu_off = 1;
+		else
+			data->simu_off = 1;
 		pthread_mutex_unlock(&data->print_mutex);
 		return (1);
 	}
