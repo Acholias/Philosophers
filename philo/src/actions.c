@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 22:39:07 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/13 12:44:19 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/13 14:09:37 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	philo_eat(t_philo *philo)
 {
 	pthread_mutex_t	*first;
 	pthread_mutex_t	*second;
-		
+
 	lock_forks(philo, &first, &second);
 	pthread_mutex_lock(first);
 	print_action(philo, MSG_FORK);
@@ -43,7 +43,6 @@ void	philo_eat(t_philo *philo)
 
 void	philo_sleep_and_think(t_philo *philo)
 {
-
 	print_action(philo, MSG_SLEEP);
 	ft_usleep(philo->data->t_sleep);
 	print_action(philo, MSG_THINK);

@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:53:35 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/13 12:35:26 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/13 14:09:05 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	init_data_mutex(t_data *data)
 		return (KO);
 	pthread_mutex_init(&data->print_mutex, NULL);
 	pthread_mutex_init(&data->simu_mutex, NULL);
-
 	while (index < data->nb_philos)
 	{
 		pthread_mutex_init(&data->forks[index], NULL);
