@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:19:23 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/11 15:09:55 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/13 12:35:34 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_data
 	int				simu_off;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	simu_mutex;
 }	t_data;
 
 typedef struct s_philo

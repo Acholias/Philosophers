@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 18:45:03 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/11 15:42:23 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/13 12:47:18 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,17 @@ long int	get_time(void)
 
 void	print_action(t_philo *philo, const char *action)
 {
+	int			simu_off;
 	long int	timestamp;
 
+	pthread_mutex_lock(&philo->data->simu_mutex);
+	simu_off = philo->data->simu_off;
+	pthread_mutex_unlock(&philo->data->simu_mutex);
+	if (simu_off)
+		return ;
 	pthread_mutex_lock(&philo->data->print_mutex);
 	timestamp = get_time() - philo->data->start_time;
-	if (!philo->data->simu_off)
-		printf("%ld %d %s\n", timestamp, philo->id, action);
+	printf("%ld %d %s\n", timestamp, philo->id, action);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
@@ -49,6 +54,7 @@ void	lock_forks(t_philo *philo, pthread_mutex_t **first,
 
 void	*start_routine(void *arg)
 {
+	int		simu_off;
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
@@ -59,9 +65,12 @@ void	*start_routine(void *arg)
 	}
 	if (philo->id % 2 == 0)
 		usleep(500);
-	while (!philo->data->simu_off)
+	while (1)
 	{
-		if (philo->data->simu_off)
+		pthread_mutex_lock(&philo->data->simu_mutex);
+		simu_off = philo->data->simu_off;
+		pthread_mutex_unlock(&philo->data->simu_mutex);
+		if (simu_off)
 			break ;
 		philo_eat(philo);
 		if (check_meals(philo))

@@ -6,13 +6,13 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:53:35 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/11 15:09:57 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/13 12:35:26 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static int	init_forks(t_data *data)
+static int	init_data_mutex(t_data *data)
 {
 	int	index;
 
@@ -21,6 +21,8 @@ static int	init_forks(t_data *data)
 	if (!data->forks)
 		return (KO);
 	pthread_mutex_init(&data->print_mutex, NULL);
+	pthread_mutex_init(&data->simu_mutex, NULL);
+
 	while (index < data->nb_philos)
 	{
 		pthread_mutex_init(&data->forks[index], NULL);
@@ -51,7 +53,7 @@ int	init_data(t_data *data, int argc, char **argv)
 	else if (argc == 6)
 		data->nb_meals = ft_atoi(argv[5]);
 	data->simu_off = 0;
-	if (init_forks(data) == KO)
+	if (init_data_mutex(data) == KO)
 		return (KO);
 	return (OK);
 }

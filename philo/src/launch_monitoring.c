@@ -6,11 +6,21 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 22:54:41 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/11 12:08:56 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/13 12:12:59 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+static int	check_simulation_off(t_data *data)
+{
+	int	simu_off;
+
+	pthread_mutex_lock(&data->simu_mutex);
+	simu_off = data->simu_off;
+	pthread_mutex_unlock(&data->simu_mutex);
+	return (simu_off);
+}
 
 void	*monitor_routine(void *arg)
 {
@@ -20,14 +30,18 @@ void	*monitor_routine(void *arg)
 
 	philos = (t_philo *)arg;
 	data = philos[0].data;
-	while (!data->simu_off)
+	while (1)
 	{
+		if (check_simulation_off(data) == 1)
+			break ;
 		full = 0;
 		if (check_full(philos, data, &full))
 			return (NULL);
 		if (data->nb_meals > 0 && full == data->nb_philos)
 		{
+			pthread_mutex_lock(&data->simu_mutex);
 			data->simu_off = 1;
+			pthread_mutex_unlock(&data->simu_mutex);
 			return (NULL);
 		}
 		usleep(500);
