@@ -27,14 +27,16 @@ declare -a TESTS=(
     "5 800 200 200"
     "200 610 200 200"
     "5 800 200 200 7"
+    "10 210 120 120"
 )
 
 declare -a RUNS=(
     3
     5
     5
-    2
+    5
     3
+    5
 )
 
 if [ $# -eq 0 ]; then
@@ -46,7 +48,7 @@ if [ $# -eq 0 ]; then
         echo -e "${YELLOW}Test $((i+1))/$NB_TESTS : ./philo $PHILO_ARGS ($RUN_COUNT runs)${RESET}"
         > "$RESULTS_LOG"
         for ((index=1; index<=RUN_COUNT; index++)); do
-            timeout $TIMEOUT_DURATION valgrind --tool=helgrind ./philo $PHILO_ARGS > "$TEMP_LOG" 2>&1
+            timeout $TIMEOUT_DURATION ./philo $PHILO_ARGS > "$TEMP_LOG" 2>&1
             if grep -q "died" "$TEMP_LOG"; then
                 PHILO_RESULT="${RED}KO${RESET}"
             else
@@ -91,7 +93,7 @@ else
     if [ $# -ge 2 ]; then
         if [[ $2 =~ ^[0-9]+$ ]]; then
             RUNS=$2
-            if [ "$RUNS" -gt 1000 ]; then
+            if [ "$RUNS" -gt 50 ]; then
                 echo -e "${RED}Erreur : Le nombre de runs ne peut pas dépasser 1000.${RESET}"
                 exit 1
             fi
@@ -107,7 +109,7 @@ fi
 echo -e "${YELLOW}Testing your current project ⏳⚙️:\n${RESET}"
 > "$RESULTS_LOG"
 for ((index=1; index<=RUNS; index++)); do
-    timeout $TIMEOUT_DURATION valgrind --tool=helgrind ./philo $PHILO_ARGS > "$TEMP_LOG" 2>&1
+    timeout $TIMEOUT_DURATION ./philo $PHILO_ARGS > "$TEMP_LOG" 2>&1
     if grep -q "died" "$TEMP_LOG"; then
         PHILO_RESULT="${RED}KO${RESET}"
     else
