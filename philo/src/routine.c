@@ -6,7 +6,7 @@
 /*   By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 18:45:03 by lumugot           #+#    #+#             */
-/*   Updated: 2025/06/13 12:47:18 by lumugot          ###   ########.fr       */
+/*   Updated: 2025/06/13 14:05:35 by lumugot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,19 @@ long int	get_time(void)
 
 void	print_action(t_philo *philo, const char *action)
 {
-	int			simu_off;
-	long int	timestamp;
+    long int	timestamp;
 
-	pthread_mutex_lock(&philo->data->simu_mutex);
-	simu_off = philo->data->simu_off;
-	pthread_mutex_unlock(&philo->data->simu_mutex);
-	if (simu_off)
-		return ;
-	pthread_mutex_lock(&philo->data->print_mutex);
-	timestamp = get_time() - philo->data->start_time;
-	printf("%ld %d %s\n", timestamp, philo->id, action);
-	pthread_mutex_unlock(&philo->data->print_mutex);
+    pthread_mutex_lock(&philo->data->simu_mutex);
+    if (philo->data->simu_off)
+    {
+        pthread_mutex_unlock(&philo->data->simu_mutex);
+        return ;
+    }
+    pthread_mutex_lock(&philo->data->print_mutex);
+    timestamp = get_time() - philo->data->start_time;
+    printf("%ld %d %s\n", timestamp, philo->id, action);
+    pthread_mutex_unlock(&philo->data->print_mutex);
+    pthread_mutex_unlock(&philo->data->simu_mutex);
 }
 
 void	lock_forks(t_philo *philo, pthread_mutex_t **first,
