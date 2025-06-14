@@ -6,7 +6,7 @@
 #    By: lumugot <lumugot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/30 15:33:08 by lumugot           #+#    #+#              #
-#    Updated: 2025/06/11 00:36:03 by lumugot          ###   ########.fr        #
+#    Updated: 2025/06/14 18:51:11 by lumugot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ $(OBJ_DIR)/%.o: %.c
 
 clean:
 	@rm -rf $(OBJ_DIR)
+	@rm -rf tester
+	@rm -rf tester.sh
 	@echo "\033[1;34m🧹  Object files and directories removed successfully!\033[0m"
 
 fclean: clean
@@ -55,7 +57,12 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+tester:
+	@git clone https://github.com/Acholias/Philosophers_tester.git tester
+	@mv tester/tester.sh .
+	@rm -rf tester
+
+.PHONY: all clean fclean re tester
 
 
 define BANNER
